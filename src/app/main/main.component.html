@@ -1,14 +1,15 @@
 <div class="main_container">
     <div class="main_content">
-        <div class="banner"
+        <div #divRef class="banner"
                 [style.width.px]="widthBanner"
                 [style.height.px]="heightBanner"
                 [style.backgroundColor]="bgColor"
                 [style.borderRadius.px]="borderRadius"
                 [style.border]="borderSize + 'px ' + borderType + borderColor"
+
                 >
             <div class="icon-banner">
-                <img src="../../favicon.ico" alt="">
+                <img [src]="iconBg">
             </div>
             <div class="text-banner">
                 <h1 [style.color]="colorTitle"
@@ -21,12 +22,12 @@
                     >{{ subtitleText }}</p>
             </div>
         </div>
-
+        <button (click)="onDownload()" >Download PNG</button>
         <div class="banner-config">
 
                 <!-- Tab menu Text -->
             <mat-tab-group class="banner-config_text">
-                <mat-tab label="Text">
+                <mat-tab class="mat-tab-style" label="Text">
                     <input [(ngModel)]="titleText" class="style-input" type="text" placeholder="Title">
                     
                     <input [(ngModel)]="subtitleText" class="style-input" type="text" placeholder="subtitle">
@@ -35,6 +36,7 @@
                     <label class="label-style" for="width">Width:
                         <input [(ngModel)]="widthBanner" class="style-input" type="number" id="width" name="width">
                     </label>
+                    
                     <label class="label-style" for="height">Height: 
                         <input [(ngModel)]="heightBanner" class="style-input" type="number" name="height" id="height">
                     </label>
@@ -42,6 +44,7 @@
                     <label class="label-style" for="title-color">Title color:
                         <input [(ngModel)]="colorTitle" class="style-input" type="color" name="title-color" id="title-color">
                     </label>
+                    
                     <label class="label-style" for="subtitle-color">Subtitle color:
                         <input [(ngModel)]="colorSubtitle" class="style-input" type="color" name="subtitle-color" id="subtitle-color">
                     </label>
@@ -64,6 +67,7 @@
                             <option value="Verdana" [ngStyle]="{'fontFamily':'Verdana'}">Verdana</option>
                         </select>
                     </label>
+                    
                     <label class="label-style" for="subtile-font">Subtitle font: 
                         <select [(ngModel)]="subtitleFontFamily" class="style-input" name="subtitle-font" id="subtitle-font">
                             <option value="Arial" [ngStyle]="{'fontFamily':'Arial'}">Arial</option>
@@ -86,13 +90,15 @@
                     <label class="label-style " for="title-font-size">Title font size:
                         <input [(ngModel)]="titleSize" class="style-input" type="range" name="title-font-size" id="title-font-size" value="30">
                     </label>
+                    
                     <label class="label-style" for="subtitle-font-size">Subtitle font size:
                         <input [(ngModel)]="subtitleSize" class="style-input" type="range" name="subtitle-font-size" id="subtitle-font-size" value="30">
                     </label>
+                    <br>
                 </mat-tab>
 
                     <!-- Tab menu BG -->
-                <mat-tab label="Background">
+                <mat-tab class="banner-config_bg" label="Background">
                     <label class="label-style" for="bg-color">Background color:
                         <input [(ngModel)]="bgColor" class="style-input" type="color">
                     </label>
@@ -118,14 +124,25 @@
                     <label  class="label-style" for="border-size-color">Border size:
                         <input [(ngModel)]="borderSize" class="style-input" type="range">
                     </label>
-                    <br>
+                    
                     <label  class="label-style" for="border-size-color">Border radius:
                         <input [(ngModel)]="borderRadius" class="style-input" type="range">
                     </label>
                 </mat-tab>
 
+
                     <!-- Tab menu Icon -->
                 <mat-tab label="Icons">
+                    <div class="icon_container">
+                        <div class="icon_content">
+                            <input #inputImagem1 (click)="mudarIcon(inputImagem1.value)" type="image" value="../../assets/images/icons/1.png" src="../../assets/images/icons/1.png" alt="">
+                            <input #inputImagem2 (click)="mudarIcon(inputImagem2.value)" type="image" value="../../assets/images/icons/2.png" src="../../assets/images/icons/2.png" alt="">
+                            <input #inputImagem3 (click)="mudarIcon(inputImagem3.value)" type="image" value="../../assets/images/icons/3.png" src="../../assets/images/icons/3.png" alt="">
+                            <input #inputImagem4 (click)="mudarIcon(inputImagem4.value)" type="image" value="../../assets/images/icons/4.png" src="../../assets/images/icons/4.png" alt="">
+                            <input #inputImagem5 (click)="mudarIcon(inputImagem5.value)" type="image" value="../../assets/images/icons/5.png" src="../../assets/images/icons/5.png" alt="">
+                            <input #inputImagem6 (click)="mudarIcon(inputImagem6.value)" type="image" value="../../assets/images/icons/6.png" src="../../assets/images/icons/6.png" alt="">
+                        </div>
+                    </div>
                 </mat-tab>
             </mat-tab-group>
 
