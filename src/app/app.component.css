@@ -5,3 +5,12 @@ app-header,app-main,app-footer{
 
     padding: 10px;
 }
+
+/* Media Query for Mobile Devices */ 
+@media (max-width: 480px) { 
+    app-header,app-main,app-footer{
+    height: 100px;
+    width: 400px;
+    }
+} 
+

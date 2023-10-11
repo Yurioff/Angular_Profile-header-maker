@@ -9,12 +9,17 @@
 
                 >
             <div class="icon-banner">
-                <img [src]="iconBg">
+                <img [src]="iconBg"
+                        [style.width.px]="iconSize"
+                        [style.height.px]="iconSize"
+                        >
             </div>
             <div class="text-banner">
                 <h1 [style.color]="colorTitle"
+                  
                     [style.fontSize.px]="titleSize"
                     [style.fontFamily]="titleFontFamily"
+                    
                     >{{ titleText }}</h1>
                 <p [style.color]="colorSubtitle" 
                     [style.fontSize.px]="subtitleSize" 
@@ -22,35 +27,36 @@
                     >{{ subtitleText }}</p>
             </div>
         </div>
-        <button (click)="onDownload()" >Download PNG</button>
+        <button class="btn-download" (click)="onDownload()" >Download PNG</button>
         <div class="banner-config">
+            <mat-tab-group class="banner-config_text">
 
                 <!-- Tab menu Text -->
-            <mat-tab-group class="banner-config_text">
                 <mat-tab class="mat-tab-style" label="Text">
-                    <input [(ngModel)]="titleText" class="style-input" type="text" placeholder="Title">
+                   <div class="tab-description">
+                    <input [(ngModel)]="titleText" class="input-style" type="text" placeholder="Title">
                     
-                    <input [(ngModel)]="subtitleText" class="style-input" type="text" placeholder="subtitle">
+                    <input [(ngModel)]="subtitleText" class="input-style" type="text" placeholder="subtitle">
                     
                     <br>
                     <label class="label-style" for="width">Width:
-                        <input [(ngModel)]="widthBanner" class="style-input" type="number" id="width" name="width">
+                        <input [(ngModel)]="widthBanner" class="input-style" type="number" id="width" name="width">
                     </label>
                     
                     <label class="label-style" for="height">Height: 
-                        <input [(ngModel)]="heightBanner" class="style-input" type="number" name="height" id="height">
+                        <input [(ngModel)]="heightBanner" class="input-style" type="number" name="height" id="height">
                     </label>
                     <br>
                     <label class="label-style" for="title-color">Title color:
-                        <input [(ngModel)]="colorTitle" class="style-input" type="color" name="title-color" id="title-color">
+                        <input [(ngModel)]="colorTitle" class="input-style" type="color" name="title-color" id="title-color">
                     </label>
                     
                     <label class="label-style" for="subtitle-color">Subtitle color:
-                        <input [(ngModel)]="colorSubtitle" class="style-input" type="color" name="subtitle-color" id="subtitle-color">
+                        <input [(ngModel)]="colorSubtitle" class="input-style" type="color" name="subtitle-color" id="subtitle-color">
                     </label>
                     <br>
                     <label class="label-style" for="title-font">Title font: 
-                        <select [(ngModel)]="titleFontFamily" class="style-input" name="title-font" id="title-font">
+                        <select [(ngModel)]="titleFontFamily" class="input-style" name="title-font" id="title-font">
                             <option value="Arial" [ngStyle]="{'fontFamily':'Arial'}">Arial</option>
                             <option value="Brush Script MT" [ngStyle]="{'fontFamily':'Brush Script MT'}">Brush Script MT</option>
                             <option value="Comic Sans" [ngStyle]="{'fontFamily': 'Comic Sans'}">Comic Sans</option>
@@ -69,7 +75,7 @@
                     </label>
                     
                     <label class="label-style" for="subtile-font">Subtitle font: 
-                        <select [(ngModel)]="subtitleFontFamily" class="style-input" name="subtitle-font" id="subtitle-font">
+                        <select [(ngModel)]="subtitleFontFamily" class="input-style" name="subtitle-font" id="subtitle-font">
                             <option value="Arial" [ngStyle]="{'fontFamily':'Arial'}">Arial</option>
                             <option value="Brush Script MT" [ngStyle]="{'fontFamily':'Brush Script MT'}">Brush Script MT</option>
                             <option value="Comic Sans" [ngStyle]="{'fontFamily': 'Comic Sans'}">Comic Sans</option>
@@ -88,61 +94,79 @@
                     </label>
                     <br>
                     <label class="label-style " for="title-font-size">Title font size:
-                        <input [(ngModel)]="titleSize" class="style-input" type="range" name="title-font-size" id="title-font-size" value="30">
+                        <input [(ngModel)]="titleSize" class="input-style" type="range" name="title-font-size" id="title-font-size" value="30">
+                        <span>{{ titleSize }}</span>
                     </label>
                     
                     <label class="label-style" for="subtitle-font-size">Subtitle font size:
-                        <input [(ngModel)]="subtitleSize" class="style-input" type="range" name="subtitle-font-size" id="subtitle-font-size" value="30">
+                        <input [(ngModel)]="subtitleSize" class="input-style" type="range" name="subtitle-font-size" id="subtitle-font-size" value="30">
+                        <span>{{ subtitleSize }}</span>
                     </label>
                     <br>
+                </div> 
                 </mat-tab>
+            
 
                     <!-- Tab menu BG -->
                 <mat-tab class="banner-config_bg" label="Background">
-                    <label class="label-style" for="bg-color">Background color:
-                        <input [(ngModel)]="bgColor" class="style-input" type="color">
-                    </label>
-                    <label class="label-style" for="border-color">Border color:
-                        <input [(ngModel)]="borderColor" class="style-input" type="color">
-                    </label>
-                    <br>
-                    <label class="label-style" for="border-type">Border type: 
-                        <select [(ngModel)]="borderType" class="style-input" name="border-type" id="border-type">
-                            <option value="hiden">hiden</option>
-                            <option value="Dotted">Dotted</option>
-                            <option value="dashed">dashed</option>
-                            <option value="solid">solid</option>
-                            <option value="double">double</option>
-                            <option value="groove">groove</option>
-                            <option value="ridge">ridge</option>
-                            <option value="inset">inset</option>
-                            <option value="outset">outset</option>
-                            <option value="none">none</option>
-                        </select>
-                    </label>
-                    <br>
-                    <label  class="label-style" for="border-size-color">Border size:
-                        <input [(ngModel)]="borderSize" class="style-input" type="range">
-                    </label>
-                    
-                    <label  class="label-style" for="border-size-color">Border radius:
-                        <input [(ngModel)]="borderRadius" class="style-input" type="range">
-                    </label>
+                    <div class="tab-description">
+                        <label class="label-style" for="bg-color">Background color:
+                            <input [(ngModel)]="bgColor" class="input-style" type="color">
+                        </label>
+                        <label class="label-style" for="border-color">Border color:
+                            <input [(ngModel)]="borderColor" class="input-style" type="color">
+                        </label>
+                        <br>
+                        <label class="label-style" for="border-type">Border type: 
+                            <select [(ngModel)]="borderType" class="input-style" name="border-type" id="border-type">
+                                <option value="hiden">hiden</option>
+                                <option value="Dotted">Dotted</option>
+                                <option value="dashed">dashed</option>
+                                <option value="solid">solid</option>
+                                <option value="double">double</option>
+                                <option value="groove">groove</option>
+                                <option value="ridge">ridge</option>
+                                <option value="inset">inset</option>
+                                <option value="outset">outset</option>
+                                <option value="none">none</option>
+                            </select>
+                        </label>
+                        <br>
+                        <label  class="label-style" for="border-size">Border size:
+                            <input [(ngModel)]="borderSize" class="input-style" type="range">
+                            <span>{{ borderSize }}</span>
+                        </label>
+                        
+                        <label  class="label-style" for="border-radius">Border radius:
+                            <input [(ngModel)]="borderRadius" class="input-style" type="range">
+                            <span>{{ borderRadius }}</span>
+                        </label>
+                    </div>
                 </mat-tab>
 
 
                     <!-- Tab menu Icon -->
                 <mat-tab label="Icons">
-                    <div class="icon_container">
-                        <div class="icon_content">
-                            <input #inputImagem1 (click)="mudarIcon(inputImagem1.value)" type="image" value="../../assets/images/icons/1.png" src="../../assets/images/icons/1.png" alt="">
-                            <input #inputImagem2 (click)="mudarIcon(inputImagem2.value)" type="image" value="../../assets/images/icons/2.png" src="../../assets/images/icons/2.png" alt="">
-                            <input #inputImagem3 (click)="mudarIcon(inputImagem3.value)" type="image" value="../../assets/images/icons/3.png" src="../../assets/images/icons/3.png" alt="">
-                            <input #inputImagem4 (click)="mudarIcon(inputImagem4.value)" type="image" value="../../assets/images/icons/4.png" src="../../assets/images/icons/4.png" alt="">
-                            <input #inputImagem5 (click)="mudarIcon(inputImagem5.value)" type="image" value="../../assets/images/icons/5.png" src="../../assets/images/icons/5.png" alt="">
-                            <input #inputImagem6 (click)="mudarIcon(inputImagem6.value)" type="image" value="../../assets/images/icons/6.png" src="../../assets/images/icons/6.png" alt="">
+                    <div class="icon_container ">
+                        <label  class="label-style" for="icon-size">Icon Size:
+                            <input [(ngModel)]="iconSize" max="230" min="50" class="input-style" type="range">
+                        </label>
+                        <div class="icon_content tab-description">
+                            <input class="iconStyle" #inputImagem8 (click)="mudarIcon(inputImagem8.value)" type="image" value="../../../assets/images/icons/8.png" src="../../../assets/images/icons/8.png" alt="">
+                            <input class="iconStyle" #inputImagem9 (click)="mudarIcon(inputImagem9.value)" type="image" value="../../../assets/images/icons/9.png" src="../../../assets/images/icons/9.png" alt="">
+                            <input class="iconStyle" #inputImagem10 (click)="mudarIcon(inputImagem10.value)" type="image" value="../../../assets/images/icons/10.png" src="../../../assets/images/icons/10.png" alt="">
+                            <input class="iconStyle" #inputImagem11 (click)="mudarIcon(inputImagem11.value)" type="image" value="../../../assets/images/icons/11.png" src="../../../assets/images/icons/11.png" alt="">
+                            <input class="iconStyle" #inputImagem12 (click)="mudarIcon(inputImagem12.value)" type="image" value="../../../assets/images/icons/12.png" src="../../../assets/images/icons/12.png" alt="">
+                            <input class="iconStyle" #inputImagem13 (click)="mudarIcon(inputImagem13.value)" type="image" value="../../../assets/images/icons/13.png" src="../../../assets/images/icons/13.png" alt="">
+                            <input class="iconStyle" #inputImagem14 (click)="mudarIcon(inputImagem14.value)" type="image" value="../../../assets/images/icons/14.png" src="../../../assets/images/icons/14.png" alt="">
+                            <input class="iconStyle" #inputImagem15 (click)="mudarIcon(inputImagem15.value)" type="image" value="../../../assets/images/icons/15.png" src="../../../assets/images/icons/15.png" alt="">
+                            <input class="iconStyle" #inputImagem16 (click)="mudarIcon(inputImagem16.value)" type="image" value="../../../assets/images/icons/16.png" src="../../../assets/images/icons/16.png" alt="">
+                            <input class="iconStyle" #inputImagem17 (click)="mudarIcon(inputImagem17.value)" type="image" value="../../../assets/images/icons/17.png" src="../../../assets/images/icons/17.png" alt="">
+                            <input class="iconStyle" #inputImagem18 (click)="mudarIcon(inputImagem18.value)" type="image" value="../../../assets/images/icons/18.png" src="../../../assets/images/icons/18.png" alt="">
+                            <input class="iconStyle" #inputImagem19 (click)="mudarIcon(inputImagem19.value)" type="image" value="../../../assets/images/icons/19.png" src="../../../assets/images/icons/19.png" alt="">
+                            <input class="iconStyle" #inputImagem20 (click)="mudarIcon(inputImagem20.value)" type="image" value="../../../assets/images/icons/20.png" src="../../../assets/images/icons/20.png" alt="">
                         </div>
-                    </div>
+                    </div>                 
                 </mat-tab>
             </mat-tab-group>
 
