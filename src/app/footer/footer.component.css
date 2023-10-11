@@ -1,0 +1,18 @@
+.footer_container{
+    height: 100px;
+    width: 700px;
+}
+
+.footer_content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+}
+
+.footer_content > p > a{
+    color: white;
+    text-decoration-line: none;
+}
